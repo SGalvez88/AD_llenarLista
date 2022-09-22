@@ -5,6 +5,10 @@
  */
 package llenadolista;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import llenadolista.Controller.InterfazPaises;
 import llenadolista.Controller.Lista;
 
 /**
@@ -17,8 +21,40 @@ public class LlenadoLista {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Lista lista = new Lista();
-        lista.setVisible(true);
+//        Lista lista = new Lista();
+//        lista.setVisible(true);
+        iniciarInterfaz(lecturaFichero());
+    }
+    
+    private static ArrayList<String> lecturaFichero(){
+        String rutaFichero = "src\\llenadolista\\todosPaises.txt";
+        String linea = "";
+        ArrayList<String> paises = new ArrayList<>();
+                
+        try {
+            FileReader fileReader = new FileReader(rutaFichero);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+           
+            while ((linea = bufferedReader.readLine()) != null) {
+                paises.add(linea);
+            }
+            
+            bufferedReader.close();
+            fileReader.close();
+            
+            return paises;
+
+        } catch (Exception exception) {
+            
+            System.out.println("El archivo no existe o no ha sido encontrado");
+        }
+            return paises;
+    }
+
+    private static void iniciarInterfaz(ArrayList<String> paises) {
+        InterfazPaises interfazPaises = new InterfazPaises();
+        interfazPaises.showInformation(paises);
+        interfazPaises.setVisible(true);
     }
     
 }

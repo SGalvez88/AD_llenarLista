@@ -14,8 +14,8 @@ import javax.swing.DefaultListModel;
  */
 public class Lista extends javax.swing.JFrame {
 
-    ArrayList<String> lista = new ArrayList<>();
-    DefaultListModel modelo = new DefaultListModel();
+    public ArrayList<String> lista = new ArrayList<>();
+    public DefaultListModel modelo = new DefaultListModel();
 
     public Lista() {
         initComponents();
