@@ -8,6 +8,7 @@ package llenadolista;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import llenadolista.Controller.InterfazPaises;
 import llenadolista.Controller.Lista;
 
@@ -46,12 +47,16 @@ public class LlenadoLista {
 
         } catch (Exception exception) {
             
-            System.out.println("El archivo no existe o no ha sido encontrado");
+            JOptionPane.showMessageDialog(null, "Se ha producido un error al leer el fichero");
         }
             return paises;
     }
 
     private static void iniciarInterfaz(ArrayList<String> paises) {
+        if(paises.isEmpty()){
+            return;
+        }
+        
         InterfazPaises interfazPaises = new InterfazPaises();
         interfazPaises.showInformation(paises);
         interfazPaises.setVisible(true);
